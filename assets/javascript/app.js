@@ -11,7 +11,7 @@ var questions = [{
 	answers: [6, 12, 18, 20],
 	correct: 2
 	},{
-	question: "what is the year of JOHN WICK's Mustang?",//Val Kilmer
+	question: "What is the year of JOHN WICK's Mustang?",//Val Kilmer
 	answers: ["1969", "1968", "1970", "1963"],
 	correct: 0
 	},{
