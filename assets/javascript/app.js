@@ -11,57 +11,95 @@ var questions = [{
 	answers: [6, 12, 18, 20],
 	correct: 2
 	},{
-	question: "Who played Batman in BATMAN FOREVER?",//Val Kilmer
-	answers: ["George Clooney", "Val Kilmer", "Michael Keaton", "Christian Bale"],
+	question: "what is the year of JOHN WICK's Mustang?",//Val Kilmer
+	answers: ["1969", "1968", "1970", "1963"],
+	correct: 0
+	},{
+	question: "Who is the operator of the Nebuchadnezzar in THE MATRIX?",//Val Kilmer
+	answers: ["Dozer", "Tank", "Mouse", "Switch"],
 	correct: 1
 	},{
-	question: "Who played Batman in BATMAN FOREVER?",//Val Kilmer
-	answers: ["George Clooney", "Val Kilmer", "Michael Keaton", "Christian Bale"],
-	correct: 1
+	question: "What is the first words Darth Vader says in THE RETURN OF THE JEDI?",//Val Kilmer
+	answers: ["You cannot hide forever Luke", "The Emperor is not as forgiving as I am", "Luke, I am your father", "You may dispense with the pleasantries, Comander"],
+	correct: 3
 	},{
-	question: "Who played Batman in BATMAN FOREVER?",//Val Kilmer
-	answers: ["George Clooney", "Val Kilmer", "Michael Keaton", "Christian Bale"],
-	correct: 1
+	question: "What was the name of the evil Romulan who destroyed Vulcan",//Val Kilmer
+	answers: ["Chelin", "Zero", "Nero", "Zion"],
+	correct: 2
 	},{
-	question: "Who played Batman in BATMAN FOREVER?",//Val Kilmer
-	answers: ["George Clooney", "Val Kilmer", "Michael Keaton", "Christian Bale"],
-	correct: 1
-	},{
-	question: "Who played Batman in BATMAN FOREVER?",//Val Kilmer
-	answers: ["George Clooney", "Val Kilmer", "Michael Keaton", "Christian Bale"],
-	correct: 1
+	question: "Which actor plays Spock?",//Val Kilmer
+	answers: ["Chris Pine", "Chris Hemsworth", "John Cho", "Zachary Quinto"],
+	correct: 3
 	}];
 
-function newQuestion(q){
-	$(".question").html(questions[q].question);	
-	for(var i = 0; i < questions[q].answers.length; i++) {
-		$(".answer").append("<li>" + questions[q].answers[i] + "</li>");
-	}
-}
+var correct = 0;
+var incorrect = 0;
+var unanswered = 0;
+var objective = false;
+var appliedQuestion = 0;
 
-function timer() {
+function triviaGame(){
+
 	var intervalTime;
-	var clockCountDown = false;
-	var countDown = {
-		startTime: 30,
-		start: function(){
-			if (!clockCountDown) {
-				intervalTime = setInterval(function(){
-					countDown.startTime--;
-					$("#clock").html("Time Remaining: " + countDown.startTime + " Seconds");
-					if (countDown.startTime === 0) {
-						countDown.stop();
-					}
-				}, 1000);
-				clockCountDown = true;
-			}
-		},
-		stop: function(){
-			clearInterval(intervalTime);
-		}
-	};
-	countDown.start();
-};
-timer();
-newQuestion(0);
+	$(".answer").empty();
 
+	function newQuestion(q){
+		$(".question").html(questions[q].question);	
+		for(var i = 0; i < questions[q].answers.length; i++) {
+			$(".answer").append("<li>" + questions[q].answers[i] + "</li>");
+			$("li").on("click", function(event) {
+				event.preventDefault();
+				if ($(this).index() === questions[q].correct) {
+					$(".question").html("Correct!");
+					correct++;
+					console.log("Correct!");
+					verify();
+				} else{
+					$(".question").html("Incorrect!");
+					incorrect++;
+					console.log("Incorrect!");
+					verify();
+				}
+			});	
+		}
+	}
+
+	function timer() {
+		var clockCountDown = false;
+		var countDown = {
+			startTime: 31,
+			start: function(){
+				if (!clockCountDown) {
+					intervalTime = setInterval(function(){
+						countDown.startTime--;
+						$("#clock").html("Time Remaining: " + countDown.startTime + " Seconds");
+						if (countDown.startTime === 0) {
+							unanswered++;
+							verify();
+						}
+					}, 1000);
+				}
+			}
+		};
+		countDown.start();
+	};
+
+	function verify() {
+		clearInterval(intervalTime);
+		appliedQuestion++;
+		clockCountDown = true;
+		triviaGame();
+	};
+
+	if (appliedQuestion < questions.length) {
+		timer();
+		newQuestion(appliedQuestion);
+	} else {
+		objective = true;
+		$(".answer").append("<li>" + "Correct Answers: " + correct + "</li>");
+		$(".answer").append("<li>" + "Incoorrect Answers: " + incorrect + "</li>");
+		$(".answer").append("<li>" + "Unanswered: " + unanswered + "</li>");
+	}
+};
+
+triviaGame();
