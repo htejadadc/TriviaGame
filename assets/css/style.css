@@ -48,3 +48,14 @@ ul {
 	color: #ffffff;
 }
 
+#startOver {
+	color: #ffffff;
+}
+
+#startOver:hover {
+	font-size: 35px;
+	background-image: url("../images/stars.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+

@@ -23,7 +23,7 @@ var questions = [{
 	answers: ["You cannot hide forever Luke", "The Emperor is not as forgiving as I am", "Luke, I am your father", "You may dispense with the pleasantries, Comander"],
 	correct: 3
 	},{
-	question: "What was the name of the evil Romulan who destroyed Vulcan",//Val Kilmer
+	question: "What was the name of the evil Romulan who destroyed Vulcan?",//Val Kilmer
 	answers: ["Chelin", "Zero", "Nero", "Zion"],
 	correct: 2
 	},{
@@ -54,12 +54,13 @@ function triviaGame(){
 				$(".question").html("Correct!");
 				correct++;
 				console.log("Correct!");
-				verify();
+				sequence();
 			} else{
 				$(".question").html("Incorrect!");
+				$(".question").append("The Correct answer is: " + questions[q].answers[questions[q].correct]);
 				incorrect++;
 				console.log("Incorrect!");
-				verify();
+				sequence();
 			}
 		});			
 	}
@@ -75,7 +76,7 @@ function triviaGame(){
 						$("#clock").html("Time Remaining: " + countDown.startTime + " Seconds");
 						if (countDown.startTime === 0) {
 							unanswered++;
-							verify();
+							sequence();
 						}
 					}, 1000);
 				}
@@ -84,10 +85,20 @@ function triviaGame(){
 		countDown.start();
 	};
 
-	function verify() {
+	function sequence() {
 		clearInterval(intervalTime);
 		appliedQuestion++;
 		clockCountDown = true;
+		setTimeout(triviaGame, 3000);
+	};
+
+	function restart() {
+		correct = 0;
+		incorrect = 0;
+		unanswered = 0;
+		objective = false;
+		appliedQuestion = 0;
+		$("#startOver").html("");
 		triviaGame();
 	};
 
@@ -96,10 +107,16 @@ function triviaGame(){
 		newQuestion(appliedQuestion);
 	} else {
 		objective = true;
+		$(".question").html("All done, this is how you did!");
 		$(".answer").append("<li>" + "Correct Answers: " + correct + "</li>");
 		$(".answer").append("<li>" + "Incorrect Answers: " + incorrect + "</li>");
 		$(".answer").append("<li>" + "Unanswered: " + unanswered + "</li>");
+		$("#startOver").html("Start Over?");		
 	}
+
+	$("#startOver").on("click", function(event) {
+		restart();
+	});
 };
 
 triviaGame();
