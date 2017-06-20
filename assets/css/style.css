@@ -10,7 +10,7 @@ h1 {
 }
 
 body {
-	font-size: 30px;
+	font-size: 25px;
 	color: #ffffff;
 	background-image: url("../images/stars.jpg");
 	background-size: cover;
@@ -29,7 +29,7 @@ ul {
 	list-style-type: none;
 }
 
-#container {
+.container {
 	padding: 30px;
 	background-image: url("../images/starwars.jpg");
 	height: 500px;
@@ -60,9 +60,15 @@ ul {
 
 #startGame {
 	color: #ffffff;
+	font-size: 50px;
 	background-image: url("../images/stars.jpg");
 	background-size: cover;
 	background-repeat: no-repeat;
 	text-align: center;
+}
+
+#content {
+	background: black;
+	padding: 20px;
 }
 

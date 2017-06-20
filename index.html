@@ -3,17 +3,22 @@
 <head>
 	<meta charset="utf-8">
 	<title>Movies Trivia Game</title>
+	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">	
 </head>
 <body>
-	<section id="container">
+	<section class="container">
 		<h1>Movie Trivia Game</h1>
-		<br><br>
-		<div id="startGame">Start</div>
-		<div id="clock"></div>
-		<div class="question"></div>
-		<ul class="answer"></ul>
-		<div id="startOver"></div>
+		<br>
+		<section id="content">
+			<div id="clock"></div>
+			<div class="question"></div>
+			<br>
+			<div id="startGame">Start</div>
+			<ul class="answer"></ul>
+			<br>
+			<div id="startOver"></div>
+		</section>
 	</section>
 	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="assets/javascript/app.js"></script>
