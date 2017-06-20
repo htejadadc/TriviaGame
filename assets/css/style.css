@@ -11,7 +11,7 @@ h1 {
 
 body {
 	font-size: 30px;
-	color: #696969;
+	color: #ffffff;
 	background-image: url("../images/stars.jpg");
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -53,9 +53,16 @@ ul {
 }
 
 #startOver:hover {
-	font-size: 35px;
 	background-image: url("../images/stars.jpg");
 	background-size: cover;
 	background-repeat: no-repeat;
+}
+
+#startGame {
+	color: #ffffff;
+	background-image: url("../images/stars.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	text-align: center;
 }
 

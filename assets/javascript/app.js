@@ -56,7 +56,7 @@ function triviaGame(){
 				console.log("Correct!");
 				sequence();
 			} else{
-				$(".question").html("Incorrect!");
+				$(".question").html("Incorrect! ");
 				$(".question").append("The Correct answer is: " + questions[q].answers[questions[q].correct]);
 				incorrect++;
 				console.log("Incorrect!");
@@ -119,4 +119,9 @@ function triviaGame(){
 	});
 };
 
-triviaGame();
+$("#startGame").on("click", function(event) {
+	$("#startGame").html("");
+	$("#clock").text("Time Remaining: 30 Seconds");
+	triviaGame();
+});
+
