@@ -47,21 +47,21 @@ function triviaGame(){
 		$(".question").html(questions[q].question);	
 		for(var i = 0; i < questions[q].answers.length; i++) {
 			$(".answer").append("<li>" + questions[q].answers[i] + "</li>");
-			$("li").on("click", function(event) {
-				event.preventDefault();
-				if ($(this).index() === questions[q].correct) {
-					$(".question").html("Correct!");
-					correct++;
-					console.log("Correct!");
-					verify();
-				} else{
-					$(".question").html("Incorrect!");
-					incorrect++;
-					console.log("Incorrect!");
-					verify();
-				}
-			});	
 		}
+		$("li").on("click", function(event) {
+			event.preventDefault();
+			if ($(this).index() === questions[q].correct) {
+				$(".question").html("Correct!");
+				correct++;
+				console.log("Correct!");
+				verify();
+			} else{
+				$(".question").html("Incorrect!");
+				incorrect++;
+				console.log("Incorrect!");
+				verify();
+			}
+		});			
 	}
 
 	function timer() {
@@ -97,7 +97,7 @@ function triviaGame(){
 	} else {
 		objective = true;
 		$(".answer").append("<li>" + "Correct Answers: " + correct + "</li>");
-		$(".answer").append("<li>" + "Incoorrect Answers: " + incorrect + "</li>");
+		$(".answer").append("<li>" + "Incorrect Answers: " + incorrect + "</li>");
 		$(".answer").append("<li>" + "Unanswered: " + unanswered + "</li>");
 	}
 };
