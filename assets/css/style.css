@@ -1,0 +1,38 @@
+* {
+	box-sizing: border-box;
+}
+
+h1 {
+	color: #ffffff;
+	font-size: 60px;
+	text-align: center;
+	margin: 0 auto;
+}
+
+body {
+	font-size: 30px;
+	color: #ffffff;
+	background-image: url("../images/stars.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+li:hover {
+	background: blue;
+}
+
+ul {
+	list-style-type: none;
+}
+
+#container {
+	padding: 30px;
+	background-image: url("../images/starwars.jpg");
+	height: 500px;
+	width: 800px;
+	background-size: cover;
+	background-repeat: no-repeat;
+	margin: 0 auto;
+	margin-top: 80px;
+}
+
